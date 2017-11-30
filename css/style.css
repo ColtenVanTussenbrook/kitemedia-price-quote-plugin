@@ -1,0 +1,149 @@
+/*CSS for Kitemedia Price Quote plugin*/
+
+/*Submit Button*/
+.quote-button {
+  background-color: #005daa;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  -webkit-transition: background-color .5s, color .5s, border .5s;
+  transition: background-color .5s, color .5s, border .5s;
+}
+
+.quote-button:hover {
+  background-color: #ffffff;
+  color: #005daa;
+  border: 2px solid #005daa;
+  cursor: pointer;
+}
+
+/*total price background*/
+.total-price {
+  background-color: #41ad49;
+  padding: 0 0 10px 15px;
+  border-radius: 20px;
+  margin-top: 20px;
+  max-width: 250px;
+}
+
+.total-price h2 {
+  color: #fff;
+  font-size: 16px;
+}
+
+label.control-label {
+  font-size: 15px;
+}
+
+.form-control-1 {
+  width: 50px;
+  font-size: 13px;
+}
+
+@media only screen and (min-width: 981px){
+  .total-price {
+    padding: 5px 0 15px 25px;
+    border-radius: 20px;
+    margin-top: 25px;
+  }
+
+  .total-price h2 {
+    color: #fff;
+    font-size: 24px;
+  }
+  label.control-label {
+    font-size: 18px;
+  }
+  .form-control-1 {
+    width: 38px;
+    font-size: 15px;
+  }
+}
+
+#tabs .nav .nav-tabs {
+padding-top:5px;
+}
+
+#tabs a {
+  color: #005daa;
+  font-size: 16px;
+}
+
+#tabs a:hover {
+  cursor: pointer;
+}
+
+#price-quote .nav-tabs {
+  border: 2px solid #005daa;
+  background-color: #fff;
+  border-radius: 8px 8px 0px 0px;
+}
+
+#price-quote .nav-tabs>li>a {
+  border-radius: 8px 8px 0px 0px;
+}
+
+#price-quote .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background-color: #005daa;
+  color: #fff !important;
+}
+
+#price-quote .nav li {
+  margin-top: 5px;
+}
+
+#left-area ul, .comment-content ul, .entry-content ul, body.et-pb-preview #main-content .container ul {
+  padding: 0 !important;
+}
+
+p.error{
+  padding: 5px 10px;
+  border: 1px solid #41ad49;
+  color: #666;
+  border-radius: 3px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+p.success{
+  padding: 8px 10px;
+  border: 1px solid #005daa;
+  color: #666;
+  border-radius: 3px;
+  font-size:16px;
+  margin-bottom: 20px;
+}
+
+  .price-check p {
+    font-size: 16px;
+  }
+
+  .form-group.hear-about label {
+    display: block;
+  }
+
+  .contact-blurb {
+    padding: 10px 0 50px 0;
+  }
+
+.tab-content {
+  border-right: 2px solid #005daa;
+  border-bottom: 2px solid #005daa;
+  border-left: 2px solid #005daa;
+  padding: 0 15px 20px 15px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+@media only screen and (max-width: 980px) {
+  #main-content .container {
+    width: 100% !important;
+  }
+  textarea#head_about_id {
+    width: 250px;
+  }
+  #main-content p, .price-check p, #main-content textarea, .contact-blurb {
+    font-size: 12px;
+  }
+}
