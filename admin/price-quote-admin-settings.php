@@ -77,32 +77,8 @@ class SettingsPage {
 
     add_settings_field(
       'bedroom',
-      'Price per bedroom',
+      'Price per room',
       array($this, 'bedroom_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'family_room',
-      'Price per family room',
-      array($this, 'family_room_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'living_room',
-      'Price per living room',
-      array($this, 'living_room_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'office',
-      'Price per office',
-      array($this, 'office_callback'),
       'my-setting-admin',
       'setting_section_id'
     );
@@ -123,113 +99,42 @@ class SettingsPage {
       'setting_section_id'
     );
 
-    add_settings_field(
-      'landing',
-      'Price per landing',
-      array($this, 'landing_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'dining_room',
-      'Price per dining room',
-      array($this, 'dining_room_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'kitchen',
-      'Price per kitchen',
-      array($this, 'kitchen_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'bathroom',
-      'Price per bathroom',
-      array($this, 'bathroom_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
     //upholstery prices
 
     add_settings_field(
-      'sofa_3',
-      'Price per sofa (3 Seats)',
-      array($this, 'sofa_3_callback'),
+      'upholstery',
+      'Upholstery price (per sq ft)',
+      array($this, 'upholstery_callback'),
       'my-setting-admin',
       'setting_section_id'
     );
 
+    //tile prices
+
     add_settings_field(
-      'sofa_4',
-      'Price per sofa (4 Seats)',
-      array($this, 'sofa_4_callback'),
+      'tile_grout',
+      'Tile &amp; Grout Per Room',
+      array($this, 'tile_grout_callback'),
       'my-setting-admin',
       'setting_section_id'
     );
 
-    add_settings_field(
-      'sectional',
-      'Price per sectional',
-      array($this, 'sectional_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
+    //area rug cleaning
 
     add_settings_field(
-      'loveseat',
-      'Price per loveseat',
-      array($this, 'loveseat_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'ottoman',
-      'Price per ottoman',
-      array($this, 'ottoman_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'chaise',
-      'Price per chaise',
-      array($this, 'chaise_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'recliner',
-      'Price per recliner',
-      array($this, 'recliner_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'wing_back',
-      'Price per wing back chair',
-      array($this, 'wing_back_callback'),
-      'my-setting-admin',
-      'setting_section_id'
-    );
-
-    add_settings_field(
-      'dining_chair',
-      'Price per dining chair',
-      array($this, 'dining_chair_callback'),
+      'area_rug',
+      'Area Rug Price (per sq ft)',
+      array($this, 'area_rug_callback'),
       'my-setting-admin',
       'setting_section_id'
     );
   }
 
+//function for text area setting
+function setting_textarea_fn() {
+	$options = get_option('plugin_options');
+	echo "<textarea id='plugin_textarea_string' name='plugin_options[text_area]' rows='7' cols='50' type='textarea'>{$options['text_area']}</textarea>";
+}
   //sanitize each setting field
 
   public function sanitize($input) {
@@ -243,61 +148,26 @@ class SettingsPage {
     if (isset($input['bedroom']))
       $new_input['bedroom'] = absint( $input['bedroom'] );
 
-    if (isset($input['family_room']))
-      $new_input['family_room'] = absint( $input['family_room'] );
-
-    if (isset($input['living_room']))
-      $new_input['living_room'] = absint( $input['living_room'] );
-
-    if (isset($input['office']))
-      $new_input['office'] = absint( $input['office'] );
-
     if (isset($input['hallway']))
       $new_input['hallway'] = absint( $input['hallway'] );
 
     if (isset($input['stair']))
       $new_input['stair'] = absint( $input['stair'] );
 
-    if (isset($input['landing']))
-      $new_input['landing'] = absint( $input['landing'] );
-
-    if (isset($input['dining_room']))
-      $new_input['dining_room'] = absint( $input['dining_room'] );
-
-    if (isset($input['kitchen']))
-      $new_input['kitchen'] = absint( $input['kitchen'] );
-
-    if (isset($input['bathroom']))
-      $new_input['bathroom'] = absint( $input['bathroom'] );
-
     //upholstery cleaning
 
-    if (isset($input['sofa_3']))
-      $new_input['sofa_3'] = absint( $input['sofa_3'] );
+    if (isset($input['upholstery']))
+      $new_input['upholstery'] = absint( $input['upholstery'] );
 
-    if (isset($input['sofa_4']))
-      $new_input['sofa_4'] = absint( $input['sofa_4'] );
+    //tile & grout cleaning
 
-    if (isset($input['sectional']))
-      $new_input['sectional'] = absint( $input['sectional'] );
+    if (isset($input['tile_grout']))
+      $new_input['tile_grout'] = absint( $input['tile_grout'] );
 
-    if (isset($input['loveseat']))
-      $new_input['loveseat'] = absint( $input['loveseat'] );
+    //area rug cleaning
 
-    if (isset($input['ottoman']))
-      $new_input['ottoman'] = absint( $input['ottoman'] );
-
-    if (isset($input['chaise']))
-      $new_input['chaise'] = absint( $input['chaise'] );
-
-    if (isset($input['recliner']))
-      $new_input['recliner'] = absint( $input['recliner'] );
-
-    if (isset($input['wing_back']))
-      $new_input['wing_back'] = absint( $input['wing_back'] );
-
-    if (isset($input['dining_chair']))
-      $new_input['dining_chair'] = absint( $input['dining_chair'] );
+    if (isset($input['area_rug']))
+      $new_input['area_rug'] = absint( $input['area_rug'] );
 
     //other items
 
@@ -332,27 +202,6 @@ class SettingsPage {
     );
   }
 
-  public function family_room_callback() {
-    printf(
-      '$<input type="text" id="family_room" name="option_name[family_room]" width="50" value="%s" />',
-      isset($this->options['family_room']) ? esc_attr($this->options['family_room']) : ''
-    );
-  }
-
-  public function living_room_callback() {
-    printf(
-      '$<input type="text" id="living_room" name="option_name[living_room]" width="50" value="%s" />',
-      isset($this->options['living_room']) ? esc_attr($this->options['living_room']) : ''
-    );
-  }
-
-  public function office_callback() {
-    printf(
-      '$<input type="text" id="office" name="option_name[office]" width="50" value="%s" />',
-      isset($this->options['office']) ? esc_attr($this->options['office']) : ''
-    );
-  }
-
   public function hallway_callback() {
     printf(
       '$<input type="text" id="hallway" name="option_name[hallway]" width="50" value="%s" />',
@@ -367,96 +216,30 @@ class SettingsPage {
     );
   }
 
-  public function landing_callback() {
-    printf(
-      '$<input type="text" id="landing" name="option_name[landing]" value="%s" />',
-      isset($this->options['landing']) ? esc_attr($this->options['landing']) : ''
-    );
-  }
-
-  public function dining_room_callback() {
-    printf(
-      '$<input type="text" id="dining_room" name="option_name[dining_room]" value="%s" />',
-      isset($this->options['dining_room']) ? esc_attr($this->options['dining_room']) : ''
-    );
-  }
-
-  public function kitchen_callback() {
-    printf(
-      '$<input type="text" id="kitchen" name="option_name[kitchen]" value="%s" />',
-      isset($this->options['kitchen']) ? esc_attr($this->options['kitchen']) : ''
-    );
-  }
-
-  public function bathroom_callback() {
-    printf(
-      '$<input type="text" id="bathroom" name="option_name[bathroom]" value="%s" />',
-      isset($this->options['bathroom']) ? esc_attr($this->options['bathroom']) : ''
-    );
-  }
-
   //upholstery cleaning callbacks
 
-  public function sofa_3_callback() {
+  public function upholstery_callback() {
     printf(
-      '$<input type="text" id="sofa_3" name="option_name[sofa_3]" width="50" value="%s" />',
-      isset($this->options['sofa_3']) ? esc_attr($this->options['sofa_3']) : ''
+      '$<input type="text" id="upholstery" name="option_name[upholstery]" width="50" value="%s" />',
+      isset($this->options['upholstery']) ? esc_attr($this->options['upholstery']) : ''
     );
   }
 
-  public function sofa_4_callback() {
+  //tile & grout cleaning callbacks
+
+  public function tile_grout_callback() {
     printf(
-      '$<input type="text" id="sofa_4" name="option_name[sofa_4]" width="50" value="%s" />',
-      isset($this->options['sofa_4']) ? esc_attr($this->options['sofa_4']) : ''
+      '$<input type="text" id="tile_grout" name="option_name[tile_grout]" width="50" value="%s" />',
+      isset($this->options['tile_grout']) ? esc_attr($this->options['tile_grout']) : ''
     );
   }
 
-  public function sectional_callback() {
-    printf(
-      '$<input type="text" id="sectional" name="option_name[sectional]" width="50" value="%s" />',
-      isset($this->options['sectional']) ? esc_attr($this->options['sectional']) : ''
-    );
-  }
+  //area rug cleaning callbacks
 
-  public function loveseat_callback() {
+  public function area_rug_callback() {
     printf(
-      '$<input type="text" id="loveseat" name="option_name[loveseat]" width="50" value="%s" />',
-      isset($this->options['loveseat']) ? esc_attr($this->options['loveseat']) : ''
-    );
-  }
-
-  public function ottoman_callback() {
-    printf(
-      '$<input type="text" id="ottoman" name="option_name[ottoman]" width="50" value="%s" />',
-      isset($this->options['ottoman']) ? esc_attr($this->options['ottoman']) : ''
-    );
-  }
-
-  public function chaise_callback() {
-    printf(
-      '$<input type="text" id="chaise" name="option_name[chaise]" width="50" value="%s" />',
-      isset($this->options['chaise']) ? esc_attr($this->options['chaise']) : ''
-    );
-  }
-
-  public function recliner_callback() {
-    printf(
-      '$<input type="text" id="recliner" name="option_name[recliner]" width="50" value="%s" />',
-      isset($this->options['recliner']) ? esc_attr($this->options['recliner']) : ''
-    );
-  }
-
-  public function wing_back_callback() {
-    printf(
-      '$<input type="text" id="wing_back" name="option_name[wing_back]" width="50" value="%s" />',
-      isset($this->options['wing_back']) ? esc_attr($this->options['wing_back']) : ''
-    );
-  }
-
-  public function dining_chair_callback() {
-    printf(
-      '$<input type="text" id="dining_chair" name="option_name[dining_chair]" width="50" value="%s" />',
-      isset($this->options['dining_chair']) ? esc_attr($this->options['dining_chair']) : ''
+      '$<input type="text" id="area_rug" name="option_name[area_rug]" width="50" value="%s" />',
+      isset($this->options['area_rug']) ? esc_attr($this->options['area_rug']) : ''
     );
   }
 
